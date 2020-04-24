@@ -11,7 +11,7 @@
 ## The VM configuration used in this project
 - Short-descriptor translation table format:
   - We use (PROCID, ASID, virtual page number) to identify a page in [TLB](https://en.wikipedia.org/wiki/Translation_lookaside_buffer)
-  - NOTE: in this project, we assume all threads have the same PROCID, 0. And we let ASID equal to thread id. 
+  - **NOTE**: in this project, we assume all threads have the same PROCID, 0. And we let ASID equal to thread id. 
 - Section-based page entry: each entry of the page table provides a mapping from a 1MB virtual page to a 1MB physical page.
 
 ## NOTE
