@@ -6,6 +6,10 @@
   - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0438c/CACFEBDD.html:
     > In AArch32 state, the Armv8 address translation system resembles the Armv7 address translation system ......
 
+- To understand ARMv7 MMU 
+  - https://sudonull.com/post/11570-Virtual-memory-in-ARMv7
+  - https://static.docs.arm.com/ddi0406/c/DDI0406C_C_arm_architecture_reference_manual.pdf
+
 - How to configure MMU
   - https://stackoverflow.com/questions/19544694/understanding-mrc-on-arm7
   - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0360f/CHDGIJFB.html
