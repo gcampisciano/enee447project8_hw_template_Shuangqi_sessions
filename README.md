@@ -2,7 +2,7 @@
 
 
 - Raspberry pi 3b+ has a ARMv8 CPU
-- According to this website, when we are using 32-bit mode of the CPU, we need to look at MMU documentation of ARMv7
+- According to this website, when we are using 32-bit mode of a ARMv8 CPU, we need to look at MMU documentation of ARMv7
   - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0438c/CACFEBDD.html:
     > In AArch32 state, the Armv8 address translation system resembles the Armv7 address translation system ......
 
