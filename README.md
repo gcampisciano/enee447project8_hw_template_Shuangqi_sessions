@@ -8,7 +8,7 @@
     
 - If you want to read the official ARM doc of its virtual memory architecture, it's [Chapter B3 of this pdf](https://static.docs.arm.com/ddi0406/c/DDI0406C_C_arm_architecture_reference_manual.pdf)
 
-## The VM configuration being used in this project
+## The VM configuration used in this project
 - Short-descriptor translation table format:
   - We use (PROCID, ASID, virtual page number) to identify a page in TLB
   - NOTE: in this project, we assume all threads have the same PROCID, 0. And we let ASID equal to thread id. 
