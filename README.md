@@ -11,7 +11,7 @@
   - https://static.docs.arm.com/ddi0406/c/DDI0406C_C_arm_architecture_reference_manual.pdf (Chapter B3)
 
 - How to configure MMU
-  - MCR/MRC p15, *, r*, c*, c*, *
+  - `MCR/MRC p15, *, r*, c*, c*, *`
     - http://www.keil.com/support/man/docs/armasm/armasm_dom1361289880404.htm
   - https://stackoverflow.com/questions/19544694/understanding-mrc-on-arm7
   - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0360f/CHDGIJFB.html
