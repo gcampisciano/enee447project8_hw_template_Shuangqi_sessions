@@ -26,7 +26,7 @@
 - Initialize `SCTLR` such that
   - MMU is enabled. Read [B4.1.130 in official ARM doc](https://static.docs.arm.com/ddi0406/c/DDI0406C_C_arm_architecture_reference_manual.pdf) to figure out how to achieve this by initializing `SCTLR` properly.
   
-## Page entry
+## Page table entry
 - Permission bits: Table B3-8 VMSAv7 MMU access permissions
 
 ## NOTE
