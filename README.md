@@ -6,7 +6,7 @@
   - Pay attention to the following points:
     - There're multiple formats for a page entry. In this project we will _**only**_ use the `section` format.
     
-- If you want to read the official ARM doc of its virtual memory architecture, it's [Chapter B3 of this pdf](https://static.docs.arm.com/ddi0406/c/DDI0406C_C_arm_architecture_reference_manual.pdf)
+- [official ARM doc](https://static.docs.arm.com/ddi0406/c/DDI0406C_C_arm_architecture_reference_manual.pdf)
 
 ## The VM configuration used in this project
 - Short-descriptor translation table format:
@@ -18,7 +18,7 @@
 ## ARM VM setup
 - Intialize `TTBCR` such that
   - we use the 32-bit translation system, with the Short-descriptor translation table format
-  - We use only `TTBR0` to point to page table. Read B3.5.4 to figure out how to achieve this by initializing `TTBCR` properly.
+  - We use only `TTBR0` to point to page table. Read B3.5.4 in [official ARM doc](https://static.docs.arm.com/ddi0406/c/DDI0406C_C_arm_architecture_reference_manual.pdf) to figure out how to achieve this by initializing `TTBCR` properly.
 
 ## NOTE
 - Since our application binaries are all smaller than 1 MB, they can all be placed within just a page. So no page fault will happen. And that's why we didn't implement page-fault handling in this code.
