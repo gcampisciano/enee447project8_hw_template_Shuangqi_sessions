@@ -14,5 +14,10 @@
   - **NOTE**: in this project, we assume all threads have the same PROCID, 0. And we let ASID equal to thread id. 
 - Section-based page entry: each entry of the page table provides a mapping from a 1MB virtual page to a 1MB physical page.
 
+## ARM VM setup
+- Intialize TTBCR such that
+  - use the 32-bit translation system, with the Short-descriptor translation table format
+  - 
+
 ## NOTE
 - Since our application binaries are all smaller than 1 MB, they can all be placed within just a page. So no page fault will happen. And that's why we didn't implement page-fault handling in this code.
