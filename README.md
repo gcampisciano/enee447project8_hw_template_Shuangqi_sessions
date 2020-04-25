@@ -28,6 +28,9 @@
   
 ## Page table entry
 - Permission bits: Table B3-8 VMSAv7 MMU access permissions
+  - USR mode should not have permission to access the page holding kernel code.
+- The general code and data should be mapped as normal data, but the I/O addresses (0x3Fxxxxxx and 0x40xxxxxx) should be marked as non-cacheable so that they are handled correctly. 
+  - B3.8.2 Short-descriptor format memory region attributes, without TEX remap
 
 ## NOTE
 - Since our application binaries are all smaller than 1 MB, they can all be placed within just a page. So no page fault will happen. And that's why we didn't implement page-fault handling in this code.
