@@ -116,11 +116,11 @@ syscall_write_block(int device, void *buffer, int bytes)
 }
 
 int
-syscall_start_thread(long name, long start_addr)
+syscall_start_thread(char *threadname, char *filename)
 {
 	register long r7 asm("r7") = SYSCALL_START_THREAD;
-	register long r0 asm("r0") = name;
-	register long r1 asm("r1") = start_addr;
+	register long r0 asm("r0") = threadname;
+	register long r1 asm("r1") = filename;
 
 	asm volatile (
 		"svc #7\n"

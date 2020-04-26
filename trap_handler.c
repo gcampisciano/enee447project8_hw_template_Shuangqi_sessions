@@ -131,19 +131,9 @@ trap_handler(unsigned long r0, unsigned long r1, unsigned long r2)
 			break;
 
 		case SYSCALL_START_THREAD:
-			log("SYSCALL_START_THREAD name =", r0);
-			log("SYSCALL_START_THREAD file =", r1);
-			data.num = r0;
-			log(data.name, NOVAL);
-
-			if (r1 == 1) {
-				create_thread(data.name, "app1.bin");
-			} else if (r1 == 2) {
-				create_thread(data.name, "app2.bin");
-			} else {
-				create_thread(data.name, (char *)vm_translate(thread_activeid(), r1));
-			}
-
+			log("SYSCALL_START_THREAD threadname =", r0);
+			log("SYSCALL_START_THREAD filename =", r1);
+            create_thread(r0, r1);
 			return 0;
 			break;
 

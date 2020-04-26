@@ -25,7 +25,7 @@ int syscall_read_cbuffer(int device, void *buffer, int bufsize);
 int syscall_write_cbuffer(int device, void *buffer, int bytes);
 int syscall_read_block(int device, void *buffer, int bufsize);
 int syscall_write_block(int device, void *buffer, int bytes);
-int syscall_start_thread(long name, long start_address);
+int syscall_start_thread(char *threadname, char *filename);
 int syscall_list_processes();
 int syscall_dump_range(long start_addr, long end_address, long width);
 int syscall_get_cpuid();

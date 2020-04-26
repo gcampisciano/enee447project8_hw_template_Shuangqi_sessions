@@ -305,12 +305,12 @@ extern void disable_fiq ( void );
 //
 
 extern void init_vm ( void );
-long vm_allocate();
-void vm_deallocate( long address );
+unsigned int vm_allocate();
+void vm_deallocate( unsigned int address );
 void map( unsigned int ASID, unsigned int vaddr, unsigned int paddr, int io, int g );
 void initialize_table( long asid );
-unsigned long *vm_pagetable( long asid );
-unsigned long vm_translate( long thread, long addr );
+unsigned int *vm_pagetable( long asid );
+unsigned int vm_translate( long asid, unsigned int addr );
 
 extern void invalidate_tlb();
 extern void sync();
