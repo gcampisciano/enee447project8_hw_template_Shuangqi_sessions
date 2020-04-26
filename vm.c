@@ -1,7 +1,7 @@
 #include "os.h"
 
-#define	ONE_MB		0x00100000
-#define	PAGE_TABLES_START	0x00030000
+#define ONE_MB      0x00100000
+#define PAGE_TABLES_START   0x00030000
 #define NUM_OF_ENTRIES_IN_ONE_PAGE_TABLE 4096
 
 unsigned int (*pagetables)[NUM_OF_ENTRIES_IN_ONE_PAGE_TABLE];
@@ -43,8 +43,8 @@ vm_allocate()
 void
 vm_deallocate( unsigned int address )
 {
-	// normally we would want to implement this, to prevent memory leaks ...
-	// but this is a ridiculously simple OS, so we will skip it
+    // normally we would want to implement this, to prevent memory leaks ...
+    // but this is a ridiculously simple OS, so we will skip it
 }
 
 /*
@@ -83,10 +83,10 @@ void map( unsigned int ASID, unsigned int vaddr, unsigned int paddr, int io, int
 void
 initialize_table( long asid )
 {
-	int i;
-	for (i=0; i<NUM_OF_ENTRIES_IN_ONE_PAGE_TABLE; i++) {
-		pagetables[asid][i] = 0;
-	}
+    int i;
+    for (i=0; i<NUM_OF_ENTRIES_IN_ONE_PAGE_TABLE; i++) {
+        pagetables[asid][i] = 0;
+    }
 }
 
 
@@ -95,31 +95,31 @@ init_vm()
 {
     long kernel_asid = 0;
 
-	next_available_physical_page = ONE_MB;
+    next_available_physical_page = ONE_MB;
 
-	pagetables = PAGE_TABLES_START;
-	initialize_table(0);
+    pagetables = PAGE_TABLES_START;
+    initialize_table(0);
 
-	// default values
-	for (int i=0; i<1024; i++) {
-		map(0, i * ONE_MB, i * ONE_MB, 0, 0);	// kernel access to code & data
-	}
-
-
+    // default values
+    for (int i=0; i<1024; i++) {
+        map(0, i * ONE_MB, i * ONE_MB, 0, 0);   // kernel access to code & data
+    }
 
 
-	// override the defaults w/ I/O locations
-	map(0, 0x3F000000, 0x3F000000, 1, 1);	// I/O addresses
-	map(0, 0x3F100000, 0x3F100000, 1, 1);	// I/O addresses
-	map(0, 0x3F200000, 0x3F200000, 1, 1);	// I/O addresses
-	map(0, 0x3F300000, 0x3F300000, 1, 1);	// I/O addresses
-	map(0, 0x40000000, 0x40000000, 1, 1);	// make sure timer addresses are still okay
+
+
+    // override the defaults w/ I/O locations
+    map(0, 0x3F000000, 0x3F000000, 1, 1);   // I/O addresses
+    map(0, 0x3F100000, 0x3F100000, 1, 1);   // I/O addresses
+    map(0, 0x3F200000, 0x3F200000, 1, 1);   // I/O addresses
+    map(0, 0x3F300000, 0x3F300000, 1, 1);   // I/O addresses
+    map(0, 0x40000000, 0x40000000, 1, 1);   // make sure timer addresses are still okay
 
 
     unsigned int *kernel_page_table = vm_pagetable(kernel_asid);
-	log("kernel page table[0] =",kernel_page_table[0]);
-	log("kernel page table[1] =",kernel_page_table[1]);
-	log("kernel page table[2] =",kernel_page_table[2]);
+    log("kernel page table[0] =",kernel_page_table[0]);
+    log("kernel page table[1] =",kernel_page_table[1]);
+    log("kernel page table[2] =",kernel_page_table[2]);
 
 
     // Make sure all pre-MMU memory accesses are done
