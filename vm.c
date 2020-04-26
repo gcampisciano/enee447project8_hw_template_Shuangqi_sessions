@@ -48,7 +48,7 @@ vm_deallocate( unsigned int address )
 }
 
 /*
-    \brief Set up a page table entry and put it into page table.
+    \brief Set up a page table entry of *section* format and put it into page table.
 
     The format of an entry can be found in Figure B3-4 in the offcial ARM doc
 
