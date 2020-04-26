@@ -130,8 +130,8 @@ init_vm()
 
     /*  Needs implementation: initialize system registers to set up VM 
         
-        With the help of official ARM doc, you need to initialize the following 
-            system registers:
+        With the help of official ARM doc and the read/write APIs in mmu.s, 
+            you need to initialize the following system registers:
 
             - CONTEXTIDR and TTBR0
                 - Have a look at irq_handler to figure out why we want to
