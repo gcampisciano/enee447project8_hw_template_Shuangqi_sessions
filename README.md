@@ -15,8 +15,6 @@
 - https://github.com/sklaw/enee447project8_hw_template_Shuangqi_sessions/blob/master/vm.c#L79
 - https://github.com/sklaw/enee447project8_hw_template_Shuangqi_sessions/blob/master/vm.c#L131
   
-## Page table entry
-- Permission bits: we don't use them. So you don't need to initialize them.
-
 ## NOTE
 - Since our application binaries are all smaller than 1 MB, they can all be placed within just a page. So no page fault will happen. And that's why we didn't implement page-fault handling in this code.
+- Permission bits in page table entries: we don't use them. So you don't need to initialize them.
