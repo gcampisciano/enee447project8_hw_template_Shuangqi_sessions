@@ -16,7 +16,7 @@ extern int getFileSize( int );
 #define NAMESIZE 16
 
 #define THREAD_STACK_START (0x80000000 - 16)
-#define THREAD_CODE_START (0x00100000 + 4)
+#define THREAD_CODE_START (0x00100000)
 
 struct tcb {
 	LL_PTRS;
@@ -104,10 +104,9 @@ create_thread(char *name, char *filename)
 
 		//  no need to map it because it's already part of kernel
 	} else {
+        load_address = vm_allocate();
 
-		//
-		// here is where the project-7 solution goes (read file into buffer)
-		//
+        // Needs implementation: read the file into load_address
 
 		tp = (struct tcb *)LL_POP(tfree);
 		if (tp == (struct tcb *)NULL) {
@@ -122,7 +121,7 @@ create_thread(char *name, char *filename)
 		if (DEBUG_MED >= DEBUG_LEVEL) idump((int *)load_address);
 
 		tp->regs[REG_sp] = THREAD_STACK_START;
-		tp->regs[REG_pc] = THREAD_CODE_START;
+		tp->regs[REG_pc] = THREAD_CODE_START+4;
 		tp->regs[REG_ttbr] = (long)vm_pagetable(tp->threadid) | 0x4a;
 		tp->regs[REG_asid] = tp->threadid;
 		strcpyN(tp->name, name, NAMESIZE);
