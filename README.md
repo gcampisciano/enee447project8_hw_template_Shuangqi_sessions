@@ -13,7 +13,6 @@
 - https://github.com/sklaw/enee447project8_hw_template_Shuangqi_sessions/blob/master/vm.c#L29
 - https://github.com/sklaw/enee447project8_hw_template_Shuangqi_sessions/blob/master/vm.c#L40
 - https://github.com/sklaw/enee447project8_hw_template_Shuangqi_sessions/blob/master/vm.c#L79
-- https://github.com/sklaw/enee447project8_hw_template_Shuangqi_sessions/blob/master/vm.c#L131
   
 ## NOTE
 - Since our application binaries are all smaller than 1 MB, they can all be placed within just a page. So no page fault will happen. And that's why we didn't implement page-fault handling in this code.
