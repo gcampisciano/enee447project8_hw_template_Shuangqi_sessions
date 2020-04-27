@@ -65,7 +65,7 @@ vm_deallocate( unsigned int address )
             If io == 1, you can initalize TEX, C, and B bits to 
                 make the entry a "Non-shareable Device".
 
-            If io == 1, you can initalize TEX, C, and B bits to 
+            If io == 0, you can initalize TEX, C, and B bits to 
                 make the entry a "Cacheable memory".
 
     \param global This is a boolean value that indicates whether
