@@ -126,31 +126,33 @@ init_vm()
     sync();
 
 
+    // Initialize system registers to set up VM and enable MMU
+    // set up ASID
+    writeCONTEXTIDR(kernel_asid);
 
+    // set up page table. Since currently we are in kernel,
+    // we are gonna use its page table.
+    writeTTBR0((unsigned int)kernel_page_table|0x4a);
 
-    /*  Needs implementation: initialize system registers to set up VM 
-        
-        With the help of official ARM doc and the read/write APIs in mmu.s, 
-            you need to initialize the following system registers:
+    long value = readTTBCR();
+    // set EAE=0, Use the 32-bit translation system, 
+    // with the Short-descriptor translation table format
+    value &= 0x7FFFFFFF;
+    // set N=0, disables use of a second set of translation tables, i.e. TTBR1.
+    value &= 0xFFFFFFF8;
+    writeTTBCR(value);
 
-            - CONTEXTIDR and TTBR0
-                - Have a look at irq_handler to figure out why we want to
-                    initialize these two registers here
-                - The idea is that once we start VM, the kernel will be the first
-                    program to be running in it. So we need to set up kernel's
-                    VM context here.
-                - NOTE: when you assign a value to TTBR0, you should
-                    OR it with 0x4a just like we did in create_thread()
-            - TTBCR 
-                - 32-bit translation system with short-descrptor format is used
-                - only TTBR0 is used ( TTBR1 is not used)
-                - NOTE: if you don't want to intialize other bits of the register,
-                    just levave them as they are.
-            - DACR
-                - Since in this project we don't make use of permission bits,
-                    you can intialize all domains to be manager mode
-            - SCTLR
-                - disable TEX remap
-                - enable MMU
-    */
+    value = readDACR();
+    // set manager mode b11 for all domains so permission bits
+    // are not used.
+    value |= 0xFFFFFFFF;
+    writeDACR(value);
+
+    value = readSCTLR();
+    // set TRE=0, disable TEX remap
+    value &= 0xEFFFFFFF;
+    // set M=1, enable MMU
+    value |= 0x00000001;
+    writeSCTLR(value);
+
 }
