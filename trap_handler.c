@@ -133,7 +133,10 @@ trap_handler(unsigned long r0, unsigned long r1, unsigned long r2)
 		case SYSCALL_START_THREAD:
 			log("SYSCALL_START_THREAD threadname =", r0);
 			log("SYSCALL_START_THREAD filename =", r1);
-            create_thread(r0, r1);
+            create_thread(
+                (char *)vm_translate(thread_activeid() ,r0), 
+                (char *)vm_translate(thread_activeid() ,r1)
+            );
 			return 0;
 			break;
 

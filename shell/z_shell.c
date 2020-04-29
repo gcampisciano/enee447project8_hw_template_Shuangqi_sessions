@@ -97,7 +97,7 @@ notmain()
 				break;
 			case CMD_RUN:
 				puts("CMD_RUN ["); puts(cmd[1].name); puts(", "); put32x(cmd[2].num); puts("]\n");
-				syscall_start_thread(cmd[1].num, cmd[2].num);
+				syscall_start_thread(cmd[1].name, cmd[2].num);
 				break;
 			case CMD_DUMP:
 				if (cmd[3].num == 0) cmd[3].num = 1;
