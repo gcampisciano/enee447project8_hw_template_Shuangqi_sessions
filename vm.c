@@ -17,7 +17,7 @@ long next_available_physical_page;
 unsigned int*
 vm_pagetable( long asid )
 {
-    // Needs implementation 
+    return pagetables[asid];
 }
 
 /*
