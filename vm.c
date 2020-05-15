@@ -26,7 +26,13 @@ vm_pagetable( long asid )
 unsigned int
 vm_translate( long ASID, unsigned int addr )
 {
-    return pagetables[asid][addr];
+    // take first 3 numbers of addr for page number
+    unsigned int page_num = (addr>>20) & 0xfff;
+    
+    // take last 5 numbers of addr for offset
+    unsigned int offset = addr & 0xfffff;
+    
+    return pagetables[asid][pagenum] + offset;
 }
 
 /*
@@ -82,8 +88,28 @@ vm_deallocate( unsigned int address )
 */
 void map( unsigned int ASID, unsigned int vaddr, unsigned int paddr, int io, int global )
 {
-    // Set pagetable so vaddr maps to paddr
-    pagetables[ASID][vaddr] = paddr;
+    // initialize val as a 32 bit number
+    val = 0x00000000;
+    
+    //bit 14:12 TEX, bit 3 C, bit 2 B
+    (val>>2) = (val>>2) | io;
+    (val>>3) = (val>>3) | io;
+    (val>>12) = (val>>12) | io;
+    (val>>13) = (val>>13) | io;
+    (val>>14) = (val>>14) | io;
+    
+    // bit 17 = global
+    (val>>17) = (val>>17) | global;
+    
+    // bit 31:20 = paddr
+    (val>>20) = (val>>20) | paddr;
+    
+    // parse vaddr
+    unsigned int page_num = (addr>>20) & 0xfff;
+    unsigned int offset = addr & 0xfffff;
+    
+    // assign val to page table at correct location
+    pagetables[ASID][page_num]+offset = val;
 }
 
 
