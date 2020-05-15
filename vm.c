@@ -6,7 +6,7 @@
 
 unsigned int (*pagetables)[NUM_OF_ENTRIES_IN_ONE_PAGE_TABLE];
 
-long next_available_physical_page;
+long next_available_physical_page = 0x00100000;
 
 
 /*
@@ -26,7 +26,7 @@ vm_pagetable( long asid )
 unsigned int
 vm_translate( long ASID, unsigned int addr )
 {
-    // Needs implementation 
+    return pagetables[asid][addr];
 }
 
 /*
@@ -37,7 +37,12 @@ vm_translate( long ASID, unsigned int addr )
 unsigned int
 vm_allocate()
 {
-    // Needs implementation 
+    // Set address to next_available_physical_page (initial value 0x00100000)
+    int addr = next_available_physical_page;
+    // Increment next_available_physical_page to next page location
+    next_available_physical_page = next_available_physical_page + 0x00100000;
+    // return address
+    return addr;
 }
 
 void
