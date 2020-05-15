@@ -82,8 +82,8 @@ vm_deallocate( unsigned int address )
 */
 void map( unsigned int ASID, unsigned int vaddr, unsigned int paddr, int io, int global )
 {
-
-    // Needs implementation 
+    // Set pagetable so vaddr maps to paddr
+    pagetables[ASID][vaddr] = paddr;
 }
 
 
