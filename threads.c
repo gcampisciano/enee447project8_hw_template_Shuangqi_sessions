@@ -107,15 +107,15 @@ create_thread(char *name, char *filename)
         load_address = vm_allocate();
         
         // Read SD Card and place contents at load_address
-		uint32_t bytesRead;
-		// Create HANDLE for file
-		HANDLE fh = sdCreateFile(filename, GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
-		if (fh != 0 && fh <= 8) {
-			// Read File
-			sdReadFile(fh, load_address, sdGetFileSize(fh,0), &bytesRead, 0);
-			// Close Handle
-			sdCloseHandle(fh);
-		}
+	uint32_t bytesRead;
+	// Create HANDLE for file
+	HANDLE fh = sdCreateFile(filename, GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+	if (fh != 0 && fh <= 8) {
+		// Read File
+		sdReadFile(fh, load_address, sdGetFileSize(fh,0), &bytesRead, 0);
+		// Close Handle
+		sdCloseHandle(fh);
+	}
 
         tp = (struct tcb *)LL_POP(tfree);
         if (tp == (struct tcb *)NULL) {
