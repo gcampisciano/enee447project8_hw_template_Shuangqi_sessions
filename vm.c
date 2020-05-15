@@ -38,7 +38,7 @@ unsigned int
 vm_allocate()
 {
     // Set address to next_available_physical_page (initial value = 0x00100000)
-    int addr = next_available_physical_page;
+    unsigned int addr = next_available_physical_page;
     
     // Increment next_available_physical_page to next page location (One MB)
     next_available_physical_page = next_available_physical_page + ONE_MB;
