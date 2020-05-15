@@ -6,7 +6,7 @@
 
 unsigned int (*pagetables)[NUM_OF_ENTRIES_IN_ONE_PAGE_TABLE];
 
-long next_available_physical_page = ONE_MB;
+long next_available_physical_page = PAGE_TABLES_START;
 
 
 /*
@@ -37,10 +37,10 @@ vm_translate( long ASID, unsigned int addr )
 unsigned int
 vm_allocate()
 {
-    // Set address to next_available_physical_page (initial value 0x00100000)
+    // Set address to next_available_physical_page (initial value = 0x00030000)
     int addr = next_available_physical_page;
     
-    // Increment next_available_physical_page to next page location
+    // Increment next_available_physical_page to next page location (One MB)
     next_available_physical_page = next_available_physical_page + ONE_MB;
     
     // return address
